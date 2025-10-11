@@ -34,7 +34,7 @@ func SaveJson(data *model.DataFlag) error {
 		return err
 	}
 
-	subpasta := "jsonSaves"
+	subpasta := "../internal/jsonSave/DataJson"
 	caminhoArquivo := filepath.Join(subpasta, fmt.Sprintf("%s.json", data.JsonFileName))
 
 	// cria a subpasta se não existir
