@@ -3,7 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 
+	"github.com/lucas-rabello-dev/Stress-Test-HTTP/internal/jsonSave"
 	"github.com/lucas-rabello-dev/Stress-Test-HTTP/internal/model"
 )
 
@@ -57,7 +59,18 @@ func main() {
 		return
 	}
 
-	model.addData(url, requests, time, jsonName, method)
+
+
+	model.AddData(*url, *requests, *time, *jsonName, *method)
+
+
+
+	if JsonSave {
+		err := jsonSave.SaveJson(&model.DataFlag{})	
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
 
 
 }
