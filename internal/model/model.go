@@ -16,8 +16,12 @@ type DataFlag struct {
 	Method string
 }
 
-func addData(url string, requests int, time time.Duration, jsonFileName string, mothod string) *model.DataFlag {
+func addData(url string, requests int, time time.Duration, jsonFileName string, method string) *model.DataFlag {
 	return &model.DataFlag{
-		
+		URL: url,
+		Requests: requests,
+		Time: time,
+		JsonFileName: jsonFileName,
+		Method: method,
 	}
 }
