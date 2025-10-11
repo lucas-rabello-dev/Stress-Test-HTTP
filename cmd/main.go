@@ -24,13 +24,13 @@ func main() {
 
 	url := flag.String("url", "", "URL para as requisições")
 
-	requests := flag.Int("r", 0, "Número de requisições")
+	requests := flag.Int("requests", 0, "Número de requisições")
 
-	time := flag.Duration("t", 0, "Tempo de execução")
+	time_ := flag.Duration("time", 0, "Tempo de execução")
 
 	jsonName := flag.String("json", "", "Nome do arquivo dos dados salvos em Json")
 
-	method := flag.String("m", "", "Método para as requisições HTTP")
+	method := flag.String("method", "", "Método para as requisições HTTP")
 
 	flag.Parse() // inicia as flags
 
@@ -44,7 +44,7 @@ func main() {
 		return
 	}
 
-	if *time == 0 {
+	if *time_ == 0 {
 		fmt.Println("Você precisa adicionar um valor em -t")
 		return
 	}
@@ -61,12 +61,12 @@ func main() {
 
 
 
-	model.AddData(*url, *requests, *time, *jsonName, *method)
+	instance := model.AddData(url, requests, time_, jsonName, method)
 
 
 
 	if JsonSave {
-		err := jsonSave.SaveJson(&model.DataFlag{})	
+		err := jsonSave.SaveJson(instance)	
 		if err != nil {
 			log.Fatal(err)
 		}
