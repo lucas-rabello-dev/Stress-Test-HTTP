@@ -15,7 +15,6 @@ import (
 // Num requests -requests
 // tempo de duração (timeout)
 // flag para salvar dados em um Json (-json <name_file>.json)
-// metodo hppt para a request -method
 
 // Default is true
 var JsonSave bool = true
@@ -29,8 +28,6 @@ func main() {
 	time_ := flag.Duration("time", 0, "Tempo de execução")
 
 	jsonName := flag.String("json", "", "Nome do arquivo dos dados salvos em Json")
-
-	method := flag.String("method", "", "Método para as requisições HTTP")
 
 	flag.Parse() // inicia as flags
 
@@ -54,14 +51,7 @@ func main() {
 		JsonSave = false
 	}
 
-	if *method == "" {
-		fmt.Println("Você precisa adicionar um valor em -m")
-		return
-	}
-
-
-
-	instance := model.AddData(url, requests, time_, jsonName, method)
+	instance := model.AddData(url, requests, time_, jsonName)
 
 
 

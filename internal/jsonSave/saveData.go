@@ -15,7 +15,6 @@ type Result struct {
 	Requests int `json:"Requests"`
 	Time int `json:"Time"` // em model é time.Duration
 	JsonFileName string `json:"JsonFileName"`
-	Method string `json:"Method"`
 }
 
 // receber os dados diretamente da struct
@@ -26,7 +25,6 @@ func SaveJson(data *model.DataFlag) error {
 		Requests: data.Requests,
 		Time: int(data.Time),
 		JsonFileName: data.JsonFileName,
-		Method: data.Method,
 	}
 
 	dadosJson, err := json.MarshalIndent(result, "", " ")
